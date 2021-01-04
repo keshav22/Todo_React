@@ -85,7 +85,10 @@ class Item extends React.Component {
                     <span style={{ float: 'right' }}>
                         {this.props.Item.Type == 'TODO' ? 
                             this.props.Item.Done ? <i class="fas fa-times" onClick={() => { this.props.Item.Done = false; this.setState({ done: this.props.Item.Done }); }}></i> : <i class="fas fa-check" onClick={() => { this.props.Item.Done = true; this.setState({ done: this.props.Item.Done }); }}></i> : ''}
-                        <i class="fas fa-trash-alt" onClick={() => this.props.onDelete(this.props.index)} style={{ paddingLeft: 10 }}></i>
+                        <i class="fas fa-trash-alt" onClick={() => { this.setState({
+                            showAddTodo: false,
+                            todos: []
+                        }); this.props.onDelete(this.props.index);} } style={{ paddingLeft: 10 }}></i>
                     </span>
                 </div>
                 <div className="card-body">
